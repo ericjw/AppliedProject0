@@ -31,9 +31,8 @@ int main(int argc, char*argv[])
 			cout << setfill('0') << setw(2) << hex << set.to_ulong() << endl;
 		}
 
-		EXIT_SUCCESS;
+		return EXIT_SUCCESS;
 	}
 	else 
-		EXIT_FAILURE;
-	return 0;
+		return EXIT_FAILURE;
 }
