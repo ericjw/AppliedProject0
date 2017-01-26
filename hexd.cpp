@@ -50,7 +50,7 @@ int main(int argc, char*argv[])
 
 			for (int i = 0; i < valid; i++)
 			{
-				if (buff[i] < 32)
+				if (buff[i] < 32 || buff[i] > 126)
 					cout << '.';
 				else
 					cout << buff[i];
