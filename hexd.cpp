@@ -1,18 +1,14 @@
-#include <string>
-#include <iomanip>
 #include <fstream>
 #include <iostream>
-#include <bitset>
 #include <cstdlib>
 #include <stdint.h>
 
 using namespace std;
-
 int main(int argc, char*argv[])
 {
 	if (argc == 2)
 	{
-		std::ifstream instream(argv[1], std::ios::binary);
+		ifstream instream(argv[1], ios::binary);
 		uint8_t value;
 		int position = 0;
 
@@ -23,15 +19,15 @@ int main(int argc, char*argv[])
 
 			for (valid = 0; valid < 16 && instream; valid++)
 			{
-				instream.read(reinterpret_cast<std::fstream::char_type*>(&value), sizeof value);
+				instream.read(reinterpret_cast<fstream::char_type*>(&value), sizeof value);
 				if (!instream)
 					break;
-				bitset<8> set(value);
-				buff[valid] = set.to_ulong();
+				buff[valid] = value;
 			}
+
 			if (valid == 0)
 				break;
-			printf("%07x:", position); // prints address
+			printf("%07x:", position);
 			
 			for (int i = 0; i < 16; i++)
 			{
@@ -39,7 +35,6 @@ int main(int argc, char*argv[])
 					cout << ' ';
 				if (i < valid)
 				{
-					//cout << hex << setfill('0') << setw(2) << buff[i];
 					printf("%02x", (uint8_t)buff[i]);
 				}
 				else
